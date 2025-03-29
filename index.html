@@ -3,9 +3,252 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Kheanne Miguel's Portfolio</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat|Open+Sans">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>     
+        .image-slider {
+            position: relative;
+            max-width: 600px;
+            margin: auto;
+            text-align: center;
+        }
+        .image-slider img {
+            width: 100%;
+            display: none;
+            border-radius: 10px;
+        }
+        .image-slider img.active {
+            display: block;
+        }
+        .slider-controls {
+            position: absolute;
+            width: 100%;
+            top: 50%;
+            transform: translateY(-50%);
+            display: flex;
+            justify-content: space-between;
+        }
+        .slider-controls button {
+            background: rgba(0, 0, 0, 0.5);
+            color: white;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+            font-size: 18px;
+        }
+        .slider-controls button:hover {
+            background: rgba(0, 0, 0, 0.8);
+        }
+
+        body, h1, h2, h3, h4, h5, h6 {
+            font-family: "Montserrat", sans-serif;
+            color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            display: flex;
+            flex-direction: row;
+            min-height: 100vh;
+        }
+        .sidebar {
+            width: 120px;
+            background: #222;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .sidebar img {
+            width: 100%;
+            border-radius: 50%;
+        }
+        .sidebar a {
+            color: #f0f0f0;
+            text-decoration: none;
+            padding: 10px;
+            text-align: center;
+            width: 100%;
+            transition: background 0.3s;
+        }
+        .sidebar a:hover {
+            background: #444;
+        }
+        .main {
+            flex: 1;
+            background: #222; 
+            padding: 20px;
+        }
+        .header {
+            text-align: center;
+            padding: 50px 0;
+            background: #ffb3d9; 
+        }
+        .header h1 {
+            font-size: 2.5em;
+            margin: 0;
+            color: #222; 
+        }
+        .header p {
+            font-size: 1.2em;
+            margin: 10px 0;
+            color: #222; 
+        }
+        .section {
+            margin: 40px 0;
+        }
+        .section h2 {
+            color: #ff69b4; 
+            border-bottom: 2px solid #ff69b4;
+            padding-bottom: 10px;
+        }
+        .section p {
+            color: #ccc; 
+        }
+        .portfolio img {
+            width: 100%;
+            height: auto;
+            margin: 10px 0;
+        }
+        .contact-form input, .contact-form button {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: none;
+            border-radius: 5px;
+        }
+        .contact-form input {
+            background: #444;
+            color: #f0f0f0;
+        }
+        .contact-form button {
+            background: #ff69b4; 
+            color: #222;
+            cursor: pointer;
+        }
+        .contact-form button:hover {
+            background: #ff85c0; 
+        }
+        footer {
+            text-align: center;
+            padding: 20px;
+            background: #222; 
+        }
+        .image-slider {
+            position: relative;
+            max-width: 100%;
+            overflow: hidden;
+            margin: 20px 0;
+        }
+        .image-slider img {
+            width: 100%;
+            height: auto;
+            display: none;
+        }
+        .image-slider img.active {
+            display: block;
+        }
+        .slider-controls {
+            position: absolute;
+            top: 50%;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            transform: translateY(-50%);
+        }
+        .slider-button {
+            background: rgba(0, 0, 0, 0.5);
+            color: #fff;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        .slider-button:hover {
+            background: rgba(0, 0, 0, 0.8);
+        }
+    </style>
 </head>
+
 <body>
-    Kheanne Miguel's Web Portfolio
+    <div class="container">
+        <!-- Sidebar Navigation -->
+        <div class="sidebar">
+            <img src="C:\Users\User\Pictures\Saved Pictures\Photos\Khen\2x2.jpg" alt="it's Ken!">
+            <a href="#home">Home</a>
+            <a href="#about">About</a>
+            <a href="#contact">Contact</a>
+        </div>
+
+        <!-- Main Content -->
+        <div class="main">
+            <header class="header" id="home">
+                <h1>Kheanne Seno Miguel</h1>
+                <p>BSIT Student & Web Designer</p>
+            </header>
+
+            <div class="section image-slider">
+                <h2>Photos</h2>
+                <img src="c:\Users\User\Pictures\Saved Pictures\Photos\Khen\458602974_3371194639842100_4930361102138619874_n.jpg" alt="Photos 1" class="active">
+                <img src="c:\Users\User\Pictures\Saved Pictures\Photos\Khen\js4.jpg" alt="Photos 2">
+                <img src="c:\Users\User\Pictures\Saved Pictures\Photos\Khen\Jc7eW_6w.jpeg" alt="Photos 3">
+                <div class="slider-controls">
+                    <button onclick="prevSlide()">❮</button>
+                    <button onclick="nextSlide()">❯</button>
+                </div>
+            </div>
+            
+            <script>
+                let currentIndex = 0;
+                const slides = document.querySelectorAll('.image-slider img');
+            
+                function showSlide(index) {
+                    slides.forEach((slide, i) => {
+                        slide.classList.remove('active');
+                        if (i === index) slide.classList.add('active');
+                    });
+                }
+            
+                function nextSlide() {
+                    currentIndex = (currentIndex + 1) % slides.length;
+                    showSlide(currentIndex);
+                }
+            
+                function prevSlide() {
+                    currentIndex = (currentIndex - 1 + slides.length) % slides.length;
+                    showSlide(currentIndex);
+                }
+            
+                setInterval(nextSlide, 3000); // Auto-slide every 3 seconds
+            </script>
+
+            <div class="section" id="about">
+                <h2>About Me</h2>
+                <p>Hello! My name is Kheanne Miguel, and I’m a passionate second-year Bachelor of Science in Information Technology (BSIT) student in University of Science and Technology of Southern Philippines in Cagayan de Oro City, Philippines. I thrive in the dynamic world of tech, constantly exploring coding, networking, and problem-solving to build a future in the ever-evolving IT industry.
+
+                    I live in Balingasag, Misamis Oriental, Philippines, where I balance my academic journey with personal growth and exploration. I’m a coffee enthusiast—nothing fuels my late-night coding sessions and study marathons better than a good cup of coffee!
+                    
+                    Beyond my studies, I have a deep curiosity for technology trends, and software development. I enjoy learning new programming languages, tackling challenging projects, and staying updated with the latest innovations. In my free time, I unwind by listening to music, or watching tech-related content.
+                    
+                    I believe in continuous learning, innovation, and adaptability—essential qualities in the fast-paced IT world. My goal is to sharpen my skills and contribute to groundbreaking technological advancements.
+                    
+                    I’m excited about the journey ahead and always open to new opportunities, collaborations, and learning experiences. Let’s connect and build something amazing together!</p>
+            </div>
+
+
+            <div class="section" id="contact">
+                <h2>Contact Me</h2>
+                <form class="contact-form" action="/action_page.php" method="post">
+                    <input type="text" placeholder="Name" required name="Name">
+                    <input type="email" placeholder="Email" required name="Email">
+                    <input type="text" placeholder="Subject" required name="Subject">
+                    <input type="text" placeholder="Message" required name="Message">
+                    <button type="submit">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
 </body>
 </html>
